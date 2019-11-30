@@ -1,2 +1,2 @@
 # Quick-Hash
-Quickly hash values and get them copied to clipboard or save to file
+Whiz GUI Client packed with encryption and Hashing capabilities to meet your cryptographic needs...
