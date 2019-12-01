@@ -7,8 +7,9 @@ __Date__ = "30/11/2019"
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
-
+from PyQt5.QtWidgets import QMessageBox, QApplication
+from hashlib import *
+import pyperclip
 
 class Ui_MainWindow(object):
 
@@ -16,11 +17,28 @@ class Ui_MainWindow(object):
     def exit(self):
         user_exit = QMessageBox()
         user_exit.setIcon(QMessageBox.Information)
-        user_exit.setText("This is a message box")
-        user_exit.setWindowTitle("MessageBox demo")
-        user_exit.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
-        sys.exit(app.exec_()) if user_exit == QMessageBox.Yes else print("")
+        user_exit.setText("Exit Whiz Quick Hash?")
+        user_exit.setWindowTitle("Exit")
+        user_exit.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
+        user_exitexec = user_exit.exec()
+        if user_exitexec == QMessageBox.Yes:
+             sys.exit(app.exec_()) 
+        else:
+            pass
 
+    # function to hash 
+    def quick_hash(self):
+        plain_value = self.plaintext_edit.text()
+        hash_algoo = self.hashalgo_edit.text()
+        # available algorithms
+        _hash_algo = {'shake_128': shake_128, 'sha3_256': sha3_256, 'shake_256': shake_256, 'sha256': sha256, 'md5': md5, 'blake2s': blake2s, 'blake2b': blake2b, 'sha3_384': sha3_384, 'sha512' : sha512, 'sha3_224': sha3_224, 'sha224': sha224, 'sha3_512':sha3_512, 'sha384': sha384, 'sha1': sha1}
+        if hash_algoo in _hash_algo.keys():
+            hashed = _hash_algo[hash_algoo](plain_value.encode()).hexdigest()
+            pyperclip.copy(hashed)
+            self.hashvalue_edit.clear()
+            show_hash = self.hashvalue_edit.insertPlainText(hashed)
+            return show_hash
+            
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(640, 480)
@@ -67,18 +85,17 @@ class Ui_MainWindow(object):
         self.plaintext_edit.setReadOnly(False)
         self.plaintext_edit.setClearButtonEnabled(True)
         self.plaintext_edit.setObjectName("plaintext_edit")
+        self.plaintext_edit.setToolTip("Enter Plain Text")
         self.hashalgo_edit = QtWidgets.QLineEdit(self.centralwidget)
         self.hashalgo_edit.setGeometry(QtCore.QRect(150, 250, 441, 36))
         self.hashalgo_edit.setMaxLength(9)
         self.hashalgo_edit.setClearButtonEnabled(True)
         self.hashalgo_edit.setObjectName("hashalgo_edit")
+        self.hashalgo_edit.setToolTip("Enter Name of Hashing algorithm")
         self.hash_button = QtWidgets.QPushButton(self.centralwidget)
         self.hash_button.setGeometry(QtCore.QRect(260, 380, 111, 36))
         self.hash_button.setObjectName("hash_button")
-        self.Exit_app = QtWidgets.QLabel(self.centralwidget)
-        self.Exit_app.setGeometry(QtCore.QRect(570, 390, 64, 24))
-        self.Exit_app.setStyleSheet("font: bold 12pt \"Ubuntu Mono\";")
-        self.Exit_app.setObjectName("Exit_app")
+        self.hash_button.clicked.connect(self.quick_hash)
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(80, 90, 118, 3))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
@@ -95,6 +112,7 @@ class Ui_MainWindow(object):
         self.hashvalue_edit.setReadOnly(True)
         self.hashvalue_edit.setAcceptRichText(True)
         self.hashvalue_edit.setObjectName("hashvalue_edit")
+        self.hashvalue_edit.setToolTip("Hash result appears here")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 640, 30))
@@ -371,6 +389,7 @@ class Ui_MainWindow(object):
         self.actionMutate.setText(_translate("MainWindow", "Mutate"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionExit.triggered.connect(self.exit)
+        self.actionExit.setToolTip("Exit Whiz hash Ctrl X | Command X")
         self.actionDesigners.setText(_translate("MainWindow", "Designers"))
         self.actionUse_GUI.setText(_translate("MainWindow", "Use GUI"))
         self.actionUse_Shell.setText(_translate("MainWindow", "Use Shell"))
