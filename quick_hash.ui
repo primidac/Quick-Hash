@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>1</width>
+    <height>1</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>640</width>
+    <height>480</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Whiz Quick Hash</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Downloads/milk.png</normaloff>../Downloads/milk.png</iconset>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="plain_text">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>190</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: bold 12pt &quot;Ubuntu Mono&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Plain Text</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hash_algo">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>260</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: bold 12pt &quot;Ubuntu Mono&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Hash Algorithm</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hash_value">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>300</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: bold 12pt &quot;Ubuntu Mono&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Hash Value</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>30</y>
+      <width>491</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 italic 40pt &quot;DejaVu Sans Mono&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Whiz Quick Hash</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>483</x>
+      <y>110</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 17pt &quot;Karumbi&quot;;
+color:rgb(0, 42, 235)</string>
+    </property>
+    <property name="text">
+     <string>GUI Client</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="plaintext_edit">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>180</y>
+      <width>441</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="maxLength">
+     <number>999999999</number>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Normal</enum>
+    </property>
+    <property name="dragEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Plain Text to Hash</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="hashalgo_edit">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>250</y>
+      <width>441</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="maxLength">
+     <number>9</number>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Hashing Algorithm</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hash_button">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>380</y>
+      <width>111</width>
+      <height>36</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hash</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Exit_app">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>390</y>
+      <width>64</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: bold 12pt &quot;Ubuntu Mono&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Exit</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>90</y>
+      <width>118</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>40</y>
+      <width>3</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="hashvalue_edit">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>330</y>
+      <width>571</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 12pt &quot;Ubuntu Mono&quot;;</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="acceptRichText">
+     <bool>true</bool>
+    </property>
+    <property name="placeholderText">
+     <string>                              Hash Result</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMenu">
+    <property name="title">
+     <string>Menu</string>
+    </property>
+    <widget class="QMenu" name="menuLookup_Hash">
+     <property name="title">
+      <string>Lookup Hash</string>
+     </property>
+     <addaction name="actionHash_Details"/>
+     <addaction name="actionAbout_Hash"/>
+    </widget>
+    <widget class="QMenu" name="menuHash_Multiple_Text">
+     <property name="title">
+      <string>Hash Multiple Text</string>
+     </property>
+     <addaction name="actionSave_to_File"/>
+     <addaction name="actionSave_to_clipboard"/>
+    </widget>
+    <addaction name="Quick_Hash"/>
+    <addaction name="menuLookup_Hash"/>
+    <addaction name="menuHash_Multiple_Text"/>
+    <addaction name="actionHash_File"/>
+    <addaction name="actionMutate"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuHash_Algorithms">
+    <property name="title">
+     <string>Hash Algorithms</string>
+    </property>
+    <widget class="QMenu" name="menuMD5">
+     <property name="title">
+      <string>MD5</string>
+     </property>
+     <addaction name="actionAbout_MD5"/>
+     <addaction name="actionAbout_MD5_2"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA256">
+     <property name="title">
+      <string>SHA256</string>
+     </property>
+     <addaction name="actionAbour_SHA256"/>
+     <addaction name="actionAbout_SHA256"/>
+    </widget>
+    <widget class="QMenu" name="menuSHAKE_128">
+     <property name="title">
+      <string>SHAKE_128</string>
+     </property>
+     <addaction name="actionUse_SHAKE_128"/>
+     <addaction name="actionAbout_SHAKE_128"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA3_256">
+     <property name="title">
+      <string>SHA3_256</string>
+     </property>
+     <addaction name="actionUse_SHA3_256"/>
+     <addaction name="actionAbout_SHA3_256"/>
+    </widget>
+    <widget class="QMenu" name="menuSHAKE_256">
+     <property name="title">
+      <string>SHAKE_256</string>
+     </property>
+     <addaction name="actionUse_SHAKE_256"/>
+     <addaction name="actionAbout_SHAKE_256"/>
+    </widget>
+    <widget class="QMenu" name="menuBLAKE2S">
+     <property name="title">
+      <string>BLAKE2S</string>
+     </property>
+     <addaction name="actionUse_BLAKE2S"/>
+     <addaction name="actionAbout_BLAKE2S"/>
+    </widget>
+    <widget class="QMenu" name="menuBLAKE2B">
+     <property name="title">
+      <string>BLAKE2B</string>
+     </property>
+     <addaction name="actionUse_BLAKE2B"/>
+     <addaction name="actionAbout_BLAKE2B"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA3_224">
+     <property name="title">
+      <string>SHA3_224</string>
+     </property>
+     <addaction name="actionUse_SHA3_224"/>
+     <addaction name="actionAbout_SHA3_224"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA3_384">
+     <property name="title">
+      <string>SHA3_384</string>
+     </property>
+     <addaction name="actionUse_SHA3_384"/>
+     <addaction name="actionAbout_SHA3_384"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA512">
+     <property name="title">
+      <string>SHA512</string>
+     </property>
+     <addaction name="actionUse_SHA512"/>
+     <addaction name="actionAbout_SHA512"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA224">
+     <property name="title">
+      <string>SHA224</string>
+     </property>
+     <addaction name="actionUse_SHA224"/>
+     <addaction name="actionAbout_SHA224"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA3_512">
+     <property name="title">
+      <string>SHA3_512</string>
+     </property>
+     <addaction name="actionUse_SHA3_512"/>
+     <addaction name="actionAbout_SHA3_512"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA384">
+     <property name="title">
+      <string>SHA384</string>
+     </property>
+     <addaction name="actionUse_SHA384"/>
+     <addaction name="actionAbout_SHA384"/>
+    </widget>
+    <widget class="QMenu" name="menuSHA1">
+     <property name="title">
+      <string>SHA1</string>
+     </property>
+     <addaction name="actionUse_SHA1"/>
+     <addaction name="actionAbout_SHA1"/>
+    </widget>
+    <addaction name="menuMD5"/>
+    <addaction name="menuSHA256"/>
+    <addaction name="menuSHAKE_128"/>
+    <addaction name="menuSHA3_256"/>
+    <addaction name="menuSHAKE_256"/>
+    <addaction name="menuBLAKE2S"/>
+    <addaction name="menuBLAKE2B"/>
+    <addaction name="menuSHA3_224"/>
+    <addaction name="menuSHA3_384"/>
+    <addaction name="menuSHA512"/>
+    <addaction name="menuSHA224"/>
+    <addaction name="menuSHA3_512"/>
+    <addaction name="menuSHA384"/>
+    <addaction name="menuSHA1"/>
+   </widget>
+   <widget class="QMenu" name="menuEncryption">
+    <property name="title">
+     <string>Encryption</string>
+    </property>
+    <addaction name="actionUse_GUI"/>
+    <addaction name="actionUse_Shell"/>
+   </widget>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>About</string>
+    </property>
+    <widget class="QMenu" name="menuCredits">
+     <property name="title">
+      <string>Credits</string>
+     </property>
+     <addaction name="actionDevelopers"/>
+     <addaction name="actionDesigners"/>
+    </widget>
+    <addaction name="actionAbout_Whiz"/>
+    <addaction name="actionAbout_CyberXaviours"/>
+    <addaction name="menuCredits"/>
+   </widget>
+   <addaction name="menuMenu"/>
+   <addaction name="menuHash_Algorithms"/>
+   <addaction name="menuEncryption"/>
+   <addaction name="menuAbout"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="Quick_Hash">
+   <property name="text">
+    <string>Quick Hash</string>
+   </property>
+  </action>
+  <action name="actionAbout_MD5">
+   <property name="text">
+    <string>Use MD5</string>
+   </property>
+  </action>
+  <action name="actionAbour_SHA256">
+   <property name="text">
+    <string>Use SHA256</string>
+   </property>
+  </action>
+  <action name="actionHash_Details">
+   <property name="text">
+    <string>Hash Details</string>
+   </property>
+  </action>
+  <action name="actionAbout_Hash">
+   <property name="text">
+    <string>About Hash</string>
+   </property>
+  </action>
+  <action name="actionSave_to_File">
+   <property name="text">
+    <string>Save to File</string>
+   </property>
+  </action>
+  <action name="actionSave_to_clipboard">
+   <property name="text">
+    <string>Save to clipboard</string>
+   </property>
+  </action>
+  <action name="actionAbout_MD5_2">
+   <property name="text">
+    <string>About MD5</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA256">
+   <property name="text">
+    <string>About SHA256</string>
+   </property>
+  </action>
+  <action name="actionUse_SHAKE_128">
+   <property name="text">
+    <string>Use SHAKE_128</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHAKE_128">
+   <property name="text">
+    <string>About SHAKE_128</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA3_256">
+   <property name="text">
+    <string>Use SHA3_256</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA3_256">
+   <property name="text">
+    <string>About SHA3_256</string>
+   </property>
+  </action>
+  <action name="actionUse_SHAKE_256">
+   <property name="text">
+    <string>Use SHAKE_256</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHAKE_256">
+   <property name="text">
+    <string>About SHAKE_256</string>
+   </property>
+  </action>
+  <action name="actionUse_BLAKE2S">
+   <property name="text">
+    <string>Use BLAKE2S</string>
+   </property>
+  </action>
+  <action name="actionAbout_BLAKE2S">
+   <property name="text">
+    <string>About BLAKE2S</string>
+   </property>
+  </action>
+  <action name="actionUse_BLAKE2B">
+   <property name="text">
+    <string>Use BLAKE2B</string>
+   </property>
+  </action>
+  <action name="actionAbout_BLAKE2B">
+   <property name="text">
+    <string>About BLAKE2B</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA3_224">
+   <property name="text">
+    <string>Use SHA3_224</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA3_224">
+   <property name="text">
+    <string>About SHA3_224</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA3_384">
+   <property name="text">
+    <string>Use SHA3_384</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA3_384">
+   <property name="text">
+    <string>About SHA3_384</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA512">
+   <property name="text">
+    <string>Use SHA512</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA512">
+   <property name="text">
+    <string>About SHA512</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA224">
+   <property name="text">
+    <string>Use SHA224</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA224">
+   <property name="text">
+    <string>About SHA224</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA3_512">
+   <property name="text">
+    <string>Use SHA3_512</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA3_512">
+   <property name="text">
+    <string>About SHA3_512</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA384">
+   <property name="text">
+    <string>Use SHA384</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA384">
+   <property name="text">
+    <string>About SHA384</string>
+   </property>
+  </action>
+  <action name="actionUse_SHA1">
+   <property name="text">
+    <string>Use SHA1</string>
+   </property>
+  </action>
+  <action name="actionAbout_SHA1">
+   <property name="text">
+    <string>About SHA1</string>
+   </property>
+  </action>
+  <action name="actionHash_File">
+   <property name="text">
+    <string>Hash File</string>
+   </property>
+  </action>
+  <action name="actionAbout_Whiz">
+   <property name="text">
+    <string>About Whiz</string>
+   </property>
+  </action>
+  <action name="actionAbout_CyberXaviours">
+   <property name="text">
+    <string>About Cyber Xaviours</string>
+   </property>
+  </action>
+  <action name="actionDevelopers">
+   <property name="text">
+    <string>Developers</string>
+   </property>
+  </action>
+  <action name="actionMutate">
+   <property name="text">
+    <string>Mutate</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionDesigners">
+   <property name="text">
+    <string>Designers</string>
+   </property>
+  </action>
+  <action name="actionUse_GUI">
+   <property name="text">
+    <string>Use GUI</string>
+   </property>
+  </action>
+  <action name="actionUse_Shell">
+   <property name="text">
+    <string>Use Shell</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
