@@ -8,8 +8,12 @@ __Date__ = "30/11/2019"
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QApplication
+from PyQt5.QtCore import Qt
 from hashlib import *
 import pyperclip
+from quicklyhash import Ui_Quicklyhash
+from lookup_hash import Ui_lookup
+import pyautogui
 
 class Ui_MainWindow(object):
 
@@ -17,12 +21,12 @@ class Ui_MainWindow(object):
     def exit(self):
         user_exit = QMessageBox()
         user_exit.setIcon(QMessageBox.Information)
-        user_exit.setText("Exit Whiz Quick Hash?")
+        user_exit.setText("Exit Whiz Hash?")
         user_exit.setWindowTitle("Exit")
         user_exit.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
         user_exitexec = user_exit.exec()
         if user_exitexec == QMessageBox.Yes:
-             sys.exit(app.exec_()) 
+             pyautogui.hotkey('Alt', 'F4')
         else:
             pass
 
@@ -37,8 +41,32 @@ class Ui_MainWindow(object):
             pyperclip.copy(hashed)
             self.hashvalue_edit.clear()
             show_hash = self.hashvalue_edit.insertPlainText(hashed)
+            pyautogui.alert('Hash successfully copied to clipboard')
             return show_hash
-            
+
+    # quickly_hash function call
+    def quickly_hash(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_Quicklyhash()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    # lookup_hash function call
+    def lookup_hash(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_lookup()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    # save_to_clipboard function call
+    def copy(self):
+        pyautogui.alert("Cyber Xaviours got you covered: All hash are automatically copied to clipboard")
+
+    def savetofile(self):
+        quick_hash(self)
+        file_name = pyautogui.prompt("File Name")
+        return file_name
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(640, 480)
@@ -67,6 +95,7 @@ class Ui_MainWindow(object):
         self.hash_value.setObjectName("hash_value")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(80, 30, 491, 71))
+        self.label_4.setAlignment(Qt.AlignCenter)
         self.label_4.setStyleSheet("font: 75 italic 40pt \"DejaVu Sans Mono\";")
         self.label_4.setObjectName("label_4")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
@@ -96,16 +125,6 @@ class Ui_MainWindow(object):
         self.hash_button.setGeometry(QtCore.QRect(260, 380, 111, 36))
         self.hash_button.setObjectName("hash_button")
         self.hash_button.clicked.connect(self.quick_hash)
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setGeometry(QtCore.QRect(80, 90, 118, 3))
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setGeometry(QtCore.QRect(410, 40, 3, 61))
-        self.line_2.setFrameShape(QtWidgets.QFrame.VLine)
-        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_2.setObjectName("line_2")
         self.hashvalue_edit = QtWidgets.QTextEdit(self.centralwidget)
         self.hashvalue_edit.setGeometry(QtCore.QRect(30, 330, 571, 31))
         self.hashvalue_edit.setStyleSheet("font: 12pt \"Ubuntu Mono\";")
@@ -165,6 +184,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.Quick_Hash = QtWidgets.QAction(MainWindow)
         self.Quick_Hash.setObjectName("Quick_Hash")
+        self.Quick_Hash.triggered.connect(self.quickly_hash)
         self.actionAbout_MD5 = QtWidgets.QAction(MainWindow)
         self.actionAbout_MD5.setObjectName("actionAbout_MD5")
         self.actionAbour_SHA256 = QtWidgets.QAction(MainWindow)
@@ -175,8 +195,10 @@ class Ui_MainWindow(object):
         self.actionAbout_Hash.setObjectName("actionAbout_Hash")
         self.actionSave_to_File = QtWidgets.QAction(MainWindow)
         self.actionSave_to_File.setObjectName("actionSave_to_File")
+        self.actionSave_to_File.triggered.connect(self.savetofile)
         self.actionSave_to_clipboard = QtWidgets.QAction(MainWindow)
         self.actionSave_to_clipboard.setObjectName("actionSave_to_clipboard")
+        self.actionSave_to_clipboard.triggered.connect(self.copy)
         self.actionAbout_MD5_2 = QtWidgets.QAction(MainWindow)
         self.actionAbout_MD5_2.setObjectName("actionAbout_MD5_2")
         self.actionAbout_SHA256 = QtWidgets.QAction(MainWindow)
@@ -318,11 +340,11 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Whiz Quick Hash"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Whiz Hash"))
         self.plain_text.setText(_translate("MainWindow", "Plain Text"))
         self.hash_algo.setText(_translate("MainWindow", "Hash Algorithm"))
         self.hash_value.setText(_translate("MainWindow", "Hash Value"))
-        self.label_4.setText(_translate("MainWindow", "Whiz Quick Hash"))
+        self.label_4.setText(_translate("MainWindow", "Whiz Hash"))
         self.label_5.setText(_translate("MainWindow", "GUI Client"))
         self.plaintext_edit.setPlaceholderText(_translate("MainWindow", "Enter Plain Text to Hash"))
         self.hashalgo_edit.setPlaceholderText(_translate("MainWindow", "Enter Hashing Algorithm"))
@@ -353,6 +375,7 @@ class Ui_MainWindow(object):
         self.actionAbout_MD5.setText(_translate("MainWindow", "Use MD5"))
         self.actionAbour_SHA256.setText(_translate("MainWindow", "Use SHA256"))
         self.actionHash_Details.setText(_translate("MainWindow", "Hash Details"))
+        self.actionHash_Details.triggered.connect(self.lookup_hash)
         self.actionAbout_Hash.setText(_translate("MainWindow", "About Hash"))
         self.actionSave_to_File.setText(_translate("MainWindow", "Save to File"))
         self.actionSave_to_clipboard.setText(_translate("MainWindow", "Save to clipboard"))
