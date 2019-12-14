@@ -11,8 +11,8 @@ from PyQt5.QtWidgets import QMessageBox, QApplication
 from PyQt5.QtCore import Qt
 from hashlib import *
 import pyperclip
-from quicklyhash import Ui_Quicklyhash
-from lookup_hash import Ui_lookup
+# from quicklyhash import Ui_Quicklyhash
+# from lookup_hash import Ui_lookup
 import pyautogui
 
 class Ui_MainWindow(object):
@@ -40,8 +40,8 @@ class Ui_MainWindow(object):
             hashed = _hash_algo[hash_algoo](plain_value.encode()).hexdigest()
             pyperclip.copy(hashed)
             self.hashvalue_edit.clear()
-            show_hash = self.hashvalue_edit.insertPlainText(hashed)
             pyautogui.alert('Hash successfully copied to clipboard')
+            show_hash = self.hashvalue_edit.insertPlainText(hashed)
             return show_hash
 
     # quickly_hash function call
@@ -62,10 +62,32 @@ class Ui_MainWindow(object):
     def copy(self):
         pyautogui.alert("Cyber Xaviours got you covered: All hash are automatically copied to clipboard")
 
+    # save to file function call
     def savetofile(self):
-        quick_hash(self)
+        quick_hash()
         file_name = pyautogui.prompt("File Name")
         return file_name
+
+    # select hashing algorithm function call for md5
+    def use_md5(self):
+        append = self.hashalgo_edit.setText('md5')
+
+    # select hashing algorithm function call for sha256
+    def use_sha256(self):
+        append = self.hashalgo_edit.setText('sha256')
+
+    # select hashing algorithm function call for shake_128
+    def use_shake_128(self):
+        append = self.hashalgo_edit.setText('shake_128')
+
+    # select hashing algorithm function call for sha3_256
+    def use_sha3_256(self):
+        append = self.hashalgo_edit.setText('sha3_256')
+
+    # select hashing algorithm function call for shake256
+    def use_shake256(self):
+        append = self.hashalgo_edit.setText('shake256')
+
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -189,6 +211,7 @@ class Ui_MainWindow(object):
         self.actionAbout_MD5.setObjectName("actionAbout_MD5")
         self.actionAbour_SHA256 = QtWidgets.QAction(MainWindow)
         self.actionAbour_SHA256.setObjectName("actionAbour_SHA256")
+        self.actionAbour_SHA256.triggered.connect(self.use_sha256)
         self.actionHash_Details = QtWidgets.QAction(MainWindow)
         self.actionHash_Details.setObjectName("actionHash_Details")
         self.actionAbout_Hash = QtWidgets.QAction(MainWindow)
@@ -373,6 +396,7 @@ class Ui_MainWindow(object):
         self.menuCredits.setTitle(_translate("MainWindow", "Credits"))
         self.Quick_Hash.setText(_translate("MainWindow", "Quick Hash"))
         self.actionAbout_MD5.setText(_translate("MainWindow", "Use MD5"))
+        self.actionAbout_MD5.triggered.connect(self.use_md5)
         self.actionAbour_SHA256.setText(_translate("MainWindow", "Use SHA256"))
         self.actionHash_Details.setText(_translate("MainWindow", "Hash Details"))
         self.actionHash_Details.triggered.connect(self.lookup_hash)
