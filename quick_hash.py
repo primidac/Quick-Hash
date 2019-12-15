@@ -6,13 +6,14 @@ __Inc__ = "Cyber Xaviours"
 __Date__ = "30/11/2019"
 
 
+# importing all modules required by the program
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox, QApplication
 from PyQt5.QtCore import Qt
 from hashlib import *
 import pyperclip
-# from quicklyhash import Ui_Quicklyhash
-# from lookup_hash import Ui_lookup
+from quicklyhash import Ui_Quicklyhash
+from lookup_hash import Ui_lookup
 import pyautogui
 
 class Ui_MainWindow(object):
@@ -68,6 +69,7 @@ class Ui_MainWindow(object):
         file_name = pyautogui.prompt("File Name")
         return file_name
 
+###########################################################################################
     # select hashing algorithm function call for md5
     def use_md5(self):
         append = self.hashalgo_edit.setText('md5')
@@ -88,6 +90,7 @@ class Ui_MainWindow(object):
     def use_shake256(self):
         append = self.hashalgo_edit.setText('shake256')
 
+###########################################################################################
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -228,6 +231,7 @@ class Ui_MainWindow(object):
         self.actionAbout_SHA256.setObjectName("actionAbout_SHA256")
         self.actionUse_SHAKE_128 = QtWidgets.QAction(MainWindow)
         self.actionUse_SHAKE_128.setObjectName("actionUse_SHAKE_128")
+        self.actionUse_SHAKE_128.triggered.connect(self.use_shake_128)
         self.actionAbout_SHAKE_128 = QtWidgets.QAction(MainWindow)
         self.actionAbout_SHAKE_128.setObjectName("actionAbout_SHAKE_128")
         self.actionUse_SHA3_256 = QtWidgets.QAction(MainWindow)
